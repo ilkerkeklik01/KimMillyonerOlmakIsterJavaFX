@@ -17,7 +17,6 @@ public class Main extends Application {
         primaryStage.setTitle("Kim Milyoner Olmak İster");
         primaryStage.show();
     }
-
     public static void main(String[] args) {
         launch(args);
     }

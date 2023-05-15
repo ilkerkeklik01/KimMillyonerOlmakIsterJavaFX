@@ -1,2 +1,74 @@
-public class Congratulations {
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.Window;
+
+public class Congratulations extends Stage {
+
+    public Congratulations(Window existingWindow,int price){
+        this.initOwner(existingWindow);
+        this.initModality(Modality.APPLICATION_MODAL);
+        this.setTitle("Congratulations");
+
+
+
+        Scene scene = new Scene(createCongratulationsPane(price),1200,800);
+        this.setScene(scene);
+
+
+    }
+    public StackPane createCongratulationsPane(int price) {
+        StackPane pane = new StackPane();
+        Image image = new Image("images/dollars.jpg");
+        pane.setBackground(new Background(new BackgroundImage(image,null,null,null,null)));
+        // Create a blue rectangle with rounded corners and add it to the pane
+        Rectangle rectangle = new Rectangle(1100, 600, Color.rgb(235, 246, 255,0.7));
+        rectangle.setArcWidth(100);
+        rectangle.setArcHeight(100);
+
+        pane.getChildren().add(rectangle);
+
+        // Create a VBox to hold the congratulatory message and price
+        VBox vBox = new VBox();
+        vBox.setPadding(new Insets(20));
+        vBox.setSpacing(40);
+        vBox.setAlignment(Pos.CENTER);
+
+        // Create a Text node with the congratulatory message and add it to the VBox
+        Text message = new Text("Congratulations!");
+        message.setStyle("-fx-font-weight: bold;");
+        message.setFont(Font.font("Helvetica", 64));
+        message.setFill(Color.BLACK);
+        vBox.getChildren().add(message);
+
+        // Create a Text node with the earned price and add it to the VBox
+        Text earnedPrice = new Text("You have earned $" + price + " dollars");
+        earnedPrice.setStyle("-fx-font-weight: bold;");
+        earnedPrice.setFont(Font.font("Helvetica", 50));
+        earnedPrice.setFill(Color.BLACK);
+        vBox.getChildren().add(earnedPrice);
+
+        // Create a Text node with additional instructions and add it to the VBox
+        Text instructions = new Text("Thank you for participating in our competition.");
+        instructions.setFont(Font.font("Helvetica", 28));
+        instructions.setStyle("-fx-font-weight: bold;");
+        instructions.setFill(Color.BLACK);
+        vBox.getChildren().add(instructions);
+
+        // Add the VBox to the center of the pane
+        pane.getChildren().add(vBox);
+        vBox.setLayoutX(150);
+        vBox.setLayoutY(100);
+
+        return pane;
+    }
 }

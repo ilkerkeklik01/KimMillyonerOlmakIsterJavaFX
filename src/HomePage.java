@@ -3,12 +3,14 @@ import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
 import javax.crypto.spec.PSource;
 
 public class HomePage extends BorderPane{
-
+    static int earnedStatic =0;
     ObservableList<Question> questionObservableList;
     TopOfHome topOfHome ;
     int nextClicked = 0;
@@ -32,22 +34,30 @@ public class HomePage extends BorderPane{
     }
 
     private void setPage(){
-        //Burada bütün soruları dogru bilirse olacagı yapacam
-        if(nextClicked==10){
-
-        }
-
-        if(nextClicked<=9)
-        this.setCenter(questionObservableList.get(nextClicked));
-
         int earned = 0;
 
         for (int i = 0;i<nextClicked;i++){
             earned+= questionObservableList.get(i).price;
         }
-        topOfHome.setCurrentQuestion((nextClicked+1)+"");
-        topOfHome.setEarned("$"+earned);
-        this.setTop(topOfHome);
+        earnedStatic=earned;
+        //Burada bütün soruları dogru bilirse olacagı yapacam
+        if(nextClicked==10){
+            Window existingWindow = this.getScene().getWindow();
+            ((Stage) existingWindow).close();
+            Stage newWindow = new Congratulations(existingWindow,earned);
+
+            newWindow.show();
+            return;
+        }
+
+
+            this.setCenter(questionObservableList.get(nextClicked));
+
+            topOfHome.setCurrentQuestion((nextClicked+1)+"");
+            topOfHome.setEarned("$"+earned);
+            this.setTop(topOfHome);
+
+
     }
 
 

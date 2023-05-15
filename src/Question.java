@@ -9,6 +9,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 
 import static javafx.scene.layout.VBox.setVgrow;
 
@@ -116,6 +118,12 @@ public class Question extends BorderPane {
                 for(RadioButton each: optionButtons){
                     each.setDisable(true);
                 }
+
+                Window existingWindow = this.getScene().getWindow();
+                
+                Stage newWindow = new Congratulations(existingWindow,HomePage.earnedStatic);
+
+                newWindow.show();
 
             }
             toggleGroup.selectToggle(null);
