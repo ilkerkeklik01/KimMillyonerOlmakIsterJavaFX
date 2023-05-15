@@ -23,11 +23,15 @@ public class Question extends BorderPane {
     private RadioButton[] optionButtons;
     private String correctOption;
 
-    public Question(String price, String question, String[] options, String correctOption) {
+    int price = 0;
+
+    public Question(String price, String question, String[] options, String correctOption,HomePage homePage) {
+
+        this.price=Integer.parseInt(price.substring(1));
         // Set padding for the question area
         setPadding(new Insets(10));
         this.setStyle("-fx-background-color: lightblue;");
-
+        setMinHeight(350);
 
         // Create the price label and add it to the top right of the pane
         priceLabel = new Label(price);
@@ -90,7 +94,7 @@ public class Question extends BorderPane {
 
         Button nextButton = new Button("Next");
         nextButton.setMinWidth(100);
-        nextButton.setOnAction(e-> Controller.nextButtonClicked());
+        nextButton.setOnAction(e-> homePage.nextButtonClicked());
 
         yesButton.setOnAction(event -> {
             String selectedOption = ((RadioButton) toggleGroup.getSelectedToggle()).getText();
