@@ -12,6 +12,11 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import java.io.File;
+
 public class Congratulations extends Stage {
 
     public Congratulations(Window existingWindow,int price){
@@ -27,6 +32,7 @@ public class Congratulations extends Stage {
 
     }
     public StackPane createCongratulationsPane(int price) {
+        playCongSound();
         StackPane pane = new StackPane();
         Image image = new Image("images/dollars.jpg");
         pane.setBackground(new Background(new BackgroundImage(image,null,null,null,null)));
@@ -70,5 +76,20 @@ public class Congratulations extends Stage {
         vBox.setLayoutY(100);
 
         return pane;
+    }
+
+    private void playCongSound(){
+        String path = "src/sounds/bitis.wav";
+
+        try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(path).getAbsoluteFile());
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.start();
+        } catch(Exception ex) {
+            System.out.println("Error with playing sound.");
+            ex.printStackTrace();
+        }
+
     }
 }
