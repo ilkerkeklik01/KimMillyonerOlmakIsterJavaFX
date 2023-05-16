@@ -76,7 +76,7 @@ public class ApplicationPage extends Info implements AsNode{
         gridPane.add(submitButton, 1, 7);
 
         Scene scene = new Scene(gridPane, 600, 500);
-
+        this.setResizable(false);
         setScene(scene);
 
     }

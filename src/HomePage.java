@@ -67,26 +67,36 @@ public class HomePage extends BorderPane implements AsNode{
 
     private ObservableList<Question> getQuestions(){
         ObservableList<Question> list= FXCollections.observableArrayList();
-        list.add(new Question("$10000","1. soru \n",new String[]{"birinci seçenek","ikinci seçenek","üçüncü seçenek","dördüncü seçenek"}
-                ,"üçüncü seçenek",this));
-        list.add(new Question("$20000","2. soru \n",new String[]{"birinci seçenek","ikinci seçenek","üçüncü seçenek","dördüncü seçenek"}
-                ,"üçüncü seçenek",this));
-        list.add(new Question("$30000","3. soru \n",new String[]{"birinci seçenek","ikinci seçenek","üçüncü seçenek","dördüncü seçenek"}
-                ,"üçüncü seçenek",this));
-        list.add(new Question("$40000","4. soru \n",new String[]{"birinci seçenek","ikinci seçenek","üçüncü seçenek","dördüncü seçenek"}
-                ,"üçüncü seçenek",this));
-        list.add(new Question("$50000","5. soru \n",new String[]{"birinci seçenek","ikinci seçenek","üçüncü seçenek","dördüncü seçenek"}
-                ,"üçüncü seçenek",this));
-        list.add(new Question("$60000","6. soru \n",new String[]{"birinci seçenek","ikinci seçenek","üçüncü seçenek","dördüncü seçenek"}
-                ,"üçüncü seçenek",this));
-        list.add(new Question("$70000","7. soru \n",new String[]{"birinci seçenek","ikinci seçenek","üçüncü seçenek","dördüncü seçenek"}
-                ,"üçüncü seçenek",this));
-        list.add(new Question("$80000","8. soru \n",new String[]{"birinci seçenek","ikinci seçenek","üçüncü seçenek","dördüncü seçenek"}
-                ,"üçüncü seçenek",this));
-        list.add(new Question("$90000","9. soru \n",new String[]{"birinci seçenek","ikinci seçenek","üçüncü seçenek","dördüncü seçenek"}
-                ,"üçüncü seçenek",this));
-        list.add(new Question("$100000","10. soru \n",new String[]{"birinci seçenek","ikinci seçenek","üçüncü seçenek","dördüncü seçenek"}
-                ,"üçüncü seçenek",this));
+        list.add(new Question("$10000","1.\tTürkiye’de Erozyonla mücadele amacıyla kurulan \nvakfın kısa adı nedir?  " +
+                "\n",new String[]{"TEMA","KIZILAY","TEV","LÖSEV"}
+                ,"TEMA",this));
+        list.add(new Question("$20000","2.\tİlk Türkçe sözlük hangisidir? \n",
+                new String[]{"Kutadgu Bilig","Atabetü’l-Hakayık","Divân-ı Hikmet","Divân-ı Lügat’it-Türk"}
+                ,"Divân-ı Lügat’it-Türk",this));
+        list.add(new Question("$30000","3.\tDünyanın İlk Kadın Savaş Pilotu kimdir?\n",
+                new String[]{"Raymonde de Laroche","Sabiha Gökçen","Bedriye Tahir","Berna Şen Şenol"}
+                ,"Sabiha Gökçen",this));
+        list.add(new Question("$40000","4.\tAmerika kıtasını 2’ye ayıran önemli su \ngeçidinin adı nedir?  \n",
+                new String[]{"Panama Kanalı","Korint Kanalı","Dover Boğazı","Süveyş Kanalı"}
+                ,"Panama Kanalı",this));
+        list.add(new Question("$50000","5.\tNotada durak işareti hangisidir?  \n",
+                new String[]{"Akor","Ölçü","Es","Solfej"}
+                ,"Es",this));
+        list.add(new Question("$60000","6.\tMimar Sinan'ın ustalık dönemi eseri sayılan \nEdirne'deki eserinin adı nedir?\n",
+                new String[]{"Süleymaniye Camii","Selimiye Cami","Şehzade Camii","Mihrimah Sultan Cami"}
+                ,"Selimiye Cami",this));
+        list.add(new Question("$70000","7.\tAltın Palmiye Ödülleri hangi şehrimizde verilmektedir?\n",
+                new String[]{"Adana","İstanbul","İzmir","Antalya"}
+                ,"Antalya",this));
+        list.add(new Question("$80000","8.\tEverest Tepesine tırmanan ilk Türk dağcı kimdir?\n",
+                new String[]{"Nasuh MAHRUKİ","Uğur ULUOCAK","Serhan POÇAN","Gülnur TUMBAT"}
+                ,"Nasuh MAHRUKİ",this));
+        list.add(new Question("$90000","9.\tFIFA’ya göre futbolun doğduğu ülke neresidir?  \n",
+                new String[]{"İngiltere","Brezilya","Çin","Arjantin"}
+                ,"Çin",this));
+        list.add(new Question("$100000","10.\tDivan edebiyatında padişahları ve devletin ileri gelenleri \növmek için yazılan methiye türündeki şiirlere ne ad verilir? \n"
+                ,new String[]{"Gazel","Kaside","Mesnevi","Müstezad"}
+                ,"Kaside",this));
 
         return list;
     }
