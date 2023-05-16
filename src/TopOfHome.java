@@ -3,7 +3,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
-public class TopOfHome extends VBox {
+public class TopOfHome extends VBox implements AsNode{
 
         private String currentQuestion;
         private String earned;
@@ -47,5 +47,9 @@ public class TopOfHome extends VBox {
         earnedLabel.setText("Earned: " + earned);
     }
 
+    @Override
+    public String whichNode() {
+        return "TopOfHome VBox";
+    }
 }
 

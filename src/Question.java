@@ -4,7 +4,6 @@ import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -12,9 +11,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
-import static javafx.scene.layout.VBox.setVgrow;
 
-public class Question extends BorderPane {
+public class Question extends BorderPane implements AsNode{
 
     private Label priceLabel;
     private Label questionLabel;
@@ -30,25 +28,23 @@ public class Question extends BorderPane {
     public Question(String price, String question, String[] options, String correctOption,HomePage homePage) {
 
         this.price=Integer.parseInt(price.substring(1));
-        // Set padding for the question area
         setPadding(new Insets(10));
         this.setStyle("-fx-background-color: lightblue;");
         setMinHeight(350);
 
-        // Create the price label and add it to the top right of the pane
         priceLabel = new Label(price);
         priceLabel.setStyle("-fx-font-size: 18pt; -fx-font-weight: bold;");
         BorderPane.setAlignment(priceLabel, Pos.TOP_RIGHT);
         setMargin(priceLabel, new Insets(5));
         setRight(priceLabel);
 
-        // Create the question label and add it to the center of the pane
+        // Create the question label and add it to the screen
         questionLabel = new Label(question);
         questionLabel.setStyle("-fx-font-size: 24pt; -fx-font-weight: bold;");
         VBox questionArea = new VBox(10, questionLabel);
         setCenter(questionArea);
 
-        // Create the radio buttons and add them to a VBox
+        // Create the radio buttons  and connect them with togglegorup
         ToggleGroup toggleGroup = new ToggleGroup();
         optionButtons = new RadioButton[options.length];
         for (int i = 0; i < options.length; i++) {
@@ -61,9 +57,6 @@ public class Question extends BorderPane {
 
         VBox optionArea = new VBox(10, optionButtons);
         bottomBox.getChildren().add(optionArea);
-
-
-        // Save the correct option
         this.correctOption = correctOption;
 
         // Create the confirmation label and buttons
@@ -74,10 +67,10 @@ public class Question extends BorderPane {
         bottomBox.getChildren().add(confirmArea);
 
 
-        // Hide the confirmation area initially
+        // confirm area is not visible initially
         confirmArea.setVisible(false);
 
-        // Add a listener to the toggle group to show the confirmation area when an option is selected
+
         toggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 confirmArea.setVisible(true);
@@ -86,7 +79,7 @@ public class Question extends BorderPane {
             }
         });
 
-        // Add event handlers to the Yes and No buttons
+        // What will be happened after using buttons
         Button yesButton = (Button) confirmArea.getChildren().get(1);
         Button noButton = (Button) confirmArea.getChildren().get(2);
         Text text = new Text();
@@ -136,5 +129,10 @@ public class Question extends BorderPane {
 
         setBottom(bottomBox);
 
+    }
+
+    @Override
+    public String whichNode() {
+        return "Question BorderPane";
     }
 }

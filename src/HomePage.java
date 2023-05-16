@@ -3,13 +3,11 @@ import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
-import javax.crypto.spec.PSource;
 
-public class HomePage extends BorderPane{
+public class HomePage extends BorderPane implements AsNode{
     static int earnedStatic =0;
     ObservableList<Question> questionObservableList;
     TopOfHome topOfHome ;
@@ -94,4 +92,8 @@ public class HomePage extends BorderPane{
     }
 
 
+    @Override
+    public String whichNode() {
+        return "HomePage BorderPane";
+    }
 }
